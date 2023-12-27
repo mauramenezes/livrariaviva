@@ -20,9 +20,9 @@
                         <img class="card-img-top" src="imgs/GrandeSertaoVeredas.png" alt="Imagem do Livro">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${livro.getTitulo()}"></h5>
-                            <p class="card-text">Guimarães Rosa</p>
-                            <p class="card-text">Cia das Letras</p>
-                            <span>R$30,00</span>
+                            <p class="card-text" th:text="${livro.getAutor()}"></p>
+                            <p class="card-text" th:text="${livro.getEditora()}"></p>
+                            <span th:text="${livro.getValor()}"></span>
                             <a href="#" class="btn btn-primary">Adicionar</a>
                         </div>
                     </div>
@@ -30,7 +30,8 @@
             </div>
         </div>
     </body>
-</html>    
+</html> 
+
 <style>
     body{
         text-align: center;
@@ -41,6 +42,7 @@
         gap: 16px;
         background-color: rgb(255, 254, 192);
     }
+    
     h1{
         color: blue;
         font-family:'Times New Roman', Times, serif;
@@ -57,6 +59,7 @@
         border-radius: 12px;
         box-shadow: inset 4px 4px 12px #fdfdff;
     }
+    
     .card img{
         width: 100px;
         height: 150px;
@@ -67,7 +70,6 @@
 
     span{
         color: rgb(69, 161, 26);
-
     }
 
     nav{
@@ -75,7 +77,7 @@
         margin-left: 0;
         margin-right: 0;
         text-align: center;
-        padding: 10px;
+        padding: 5px;
         border-style: none;
         background-color: rgb(255, 229, 85);
         width: auto;
@@ -83,12 +85,10 @@
     }
     .coluna{
         margin: auto;
-
     }
 
     .row{
         margin: 20px;
-
     }
 
     table {

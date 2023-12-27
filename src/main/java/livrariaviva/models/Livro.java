@@ -18,6 +18,10 @@ public class Livro {
     private float valor;
     private int qtd;
 
+    public Livro() {
+    }
+    
+
     public Livro(String titulo, String autor, String editora, float valor) {
         this.titulo = titulo;
         this.autor = autor;
@@ -53,29 +57,6 @@ public class Livro {
         this.qtd = qtd;
     }
  
-    
-////    public void salvar(JdbcTemplate jdbc) {
-////        if (id > 0) {
-////            jdbc.update(
-////            "UPDATE produtos SET nome = ?, "
-////            + "preco = ?, qtd = ? "
-////            + "WHERE id = ?;", (ps) -> {
-////                ps.setString(1, nome);
-////                ps.setFloat(2, preco);
-////                ps.setInt(3, qtd);
-////                ps.setInt(4, id);
-////            });
-////        } else {
-////            jdbc.update(
-////            "INSERT INTO produtos (nome, preco, qtd) " +
-////            "VALUES (?, ?, ?);", (ps) -> {
-////                ps.setString(1, nome);
-////                ps.setFloat(2, preco);
-////                ps.setInt(3, qtd);
-////            });
-////        }
-////    }
-//    
     public static List<Livro> exibir(JdbcTemplate
             jdbc) {
         List<Livro> livros =
@@ -104,22 +85,4 @@ public class Livro {
 ////        });
 ////    }
 ////    
-////    public static Produto buscar(int id,
-////            JdbcTemplate jdbc) {
-////        AtomicReference<Produto> produto
-////                = new AtomicReference<>();
-////        jdbc.query("SELECT * FROM produtos "
-////        + "WHERE id = ?;", (ps) -> {
-////            ps.setInt(1, id);
-////        }, (rs) -> {
-////            Produto p = new Produto(
-////                    rs.getString("nome"), 
-////                    rs.getInt("qtd"),
-////                    rs.getFloat("preco"));
-////            p.id = rs.getInt("id");
-////            produto.set(p);
-//        });
-//        return produto.get();
-//    }
-//    
 }
