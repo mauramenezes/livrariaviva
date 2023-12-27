@@ -4,29 +4,44 @@
  */
 package controllers;
 
-import livraria.models.Livro;
+import java.util.List;
+import livrariaviva.models.Livro;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
- * @author 20211114010038
+ * @author Meury
  */
 @Controller
 public class HomeController {
-    
-    
+
     @GetMapping("/")
-    public String index(){
+    public String index(Model model) {
+        List<Livro> livros = Livro.exibir(jdbc);
+        model.addAttribute("livros", livros);
         return "index";
     }
-    
-    @PostMapping("/adicionar")
-    public String adicionar(String titulo, String categoria, float valor, String autor, String editora, int ano) {
-        Livro l = new Livro(titulo, );
-        l.salvar(jdbc);
-        return "redirect:/";
-        
-    }
+
+    @Autowired
+    JdbcTemplate jdbc;
+
+    //    @GetMapping("/adicionar")
+//    public String excluir(int id) {
+//        Livro.adicionar(id, jdbc);
+//        return "redirect:/";
+//    }
+//    @PostMapping("/adicionar")
+//    public String adicionar(String nome,
+//            int qtd, float preco) {
+//        Produto p = new Produto(nome, 
+//                qtd, preco);
+//        p.salvar(jdbc);
+//        return "redirect:/";
+//    }
+//    
 }
