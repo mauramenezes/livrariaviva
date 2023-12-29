@@ -16,7 +16,7 @@ public class Livro {
     private String autor;
     private String editora;
     private float valor;
-    private int qtd;
+    private int quantidade;
 
     public Livro() {
     }
@@ -49,12 +49,12 @@ public class Livro {
         return valor;
     }
 
-    public int getQtd() {
-        return qtd;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setQtd(int qtd) {
-        this.qtd = qtd;
+    public void setQtd(int quantidade) {
+        this.quantidade = quantidade;
     }
  
     public static List<Livro> exibir(JdbcTemplate
