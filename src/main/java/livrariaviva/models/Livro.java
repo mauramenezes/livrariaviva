@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public class Livro {
     
-    private int id;
+    private int idlivro;
     private String titulo;
     private String autor;
     private String editora;
@@ -30,7 +30,7 @@ public class Livro {
     }
 
     public int getId() {
-        return id;
+        return idlivro;
     }
 
     public String getTitulo() {
@@ -70,7 +70,7 @@ public class Livro {
                         rs.getString("editora"),
                         rs.getFloat("valor")
                         );
-                p.id = rs.getInt("id");
+                p.idlivro = rs.getInt("idlivro");
                 livros.add(p);
             } while(rs.next());
         });
