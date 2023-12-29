@@ -24,7 +24,8 @@ public class HomeController {
     public String index(Model model) {
         List<Livro> livros = Livro.exibir(jdbc);
         model.addAttribute("livros", livros);
-        return "index";
+        System.out.println(livros.isEmpty());
+        return "home";
     }
 
     @Autowired
