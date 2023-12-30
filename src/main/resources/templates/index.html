@@ -9,14 +9,14 @@
     </head>
     <body>
         <header>
-            <img class="logo" src="logolivrariaviva.png">
+            <img class="logo" src="logo.png">
             <p>"Desvende mundos, uma página de cada vez!"</p>
         </header>
         <div class="container">
             <nav>Catálogo de livros</nav>
             <div class="row">
                     <div class="card">
-                        <img class="card-img-top" src="imgs/machado.png" alt="Imagem do Livro">
+                        <img class="card-img-top" src="machado.png" alt="Imagem do Livro">
                         <div class="card-body">
                             <h5 class="card-title">50 contos</h5>
                             <p class="card-text">Machado de Assis</p>
@@ -26,7 +26,7 @@
                         </div>   
                     </div>
                     <div class="card">
-                        <img class="card-img-top" src="imgs/vidasSecas.png" alt="Imagem do Livro">
+                        <img class="card-img-top" src="vidasSecas.png" alt="Imagem do Livro">
                         <div class="card-body">
                             <h5 class="card-title">Vidas Secas</h5>
                             <p class="card-text">Graciliano Ramos</p>
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img class="card-img-top" src="imgs/AsMeninas.png" alt="Imagem do Livro">
+                        <img class="card-img-top" src="AsMeninas.png" alt="Imagem do Livro">
                         <div class="card-body">
                             <h5 class="card-title">As Meninas</h5>
                             <p class="card-text">Lygia F. Telles</p>
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img class="card-img-top" src="imgs/Abela&aFera.png" alt="Imagem do Livro">
+                        <img class="card-img-top" src="Abela&aFera.png" alt="Imagem do Livro">
                         <div class="card-body">
                             <h5 class="card-title">A bela e a fera</h5>
                             <p class="card-text">Clarice Lispector</p>
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img class="card-img-top" src="imgs/GrandeSertaoVeredas.png" alt="Imagem do Livro">
+                        <img class="card-img-top" src="GrandeSertaoVeredas.png" alt="Imagem do Livro">
                         <div class="card-body">
                             <h5 class="card-title">Grande Sertão Veredas</h5>
                             <p class="card-text">Guimarães Rosa</p>
@@ -65,7 +65,37 @@
                             <a href="#" class="btn btn-primary">Adicionar</a>
                         </div>
                     </div>
-                    <div class="card" th:each="livro : ${livros}">
+                 <div class="card">
+                        <img class="card-img-top" src="ulysses.png" alt="Imagem do Livro">
+                        <div class="card-body">
+                            <h5 class="card-title">Ulysses</h5>
+                            <p class="card-text">James Joyce</p>
+                            <p class="card-text">Penguin & Cia</p>
+                            <span>R$29,00</span>
+                            <a href="#" class="btn btn-primary">Adicionar</a>
+                        </div>
+                    </div>
+                <div class="card">
+                        <img class="card-img-top" src="sherlockholmes.png" alt="Imagem do Livro">
+                        <div class="card-body">
+                            <h5 class="card-title">Um Estudo em Vermelho</h5>
+                            <p class="card-text">Arthur C. Doyle</p>
+                            <p class="card-text">L&PM POCKET</p>
+                            <span>R$16,00</span>
+                            <a href="#" class="btn btn-primary">Adicionar</a>
+                        </div>
+                    </div>
+                <div class="card">
+                        <img class="card-img-top" src="ohobbit.png" alt="Imagem do Livro">
+                        <div class="card-body">
+                            <h5 class="card-title">O Hobbit</h5>
+                            <p class="card-text">J.R.R. Tolkien</p>
+                            <p class="card-text">Harper Collins</p>
+                            <span>R$28,00</span>
+                            <a href="#" class="btn btn-primary">Adicionar</a>
+                        </div>
+                    </div>
+<!--                <div class="card" th:each="livro : ${livros}">
                         <img class="card-img-top" src="" alt="Imagem do Livro">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${livro.getTitulo()}"></h5>
@@ -74,16 +104,14 @@
                             <span th:text="${livro.getValor()}"></span>
                             <a href="#" class="btn btn-primary">Adicionar</a>
                         </div>
-                    </div>  
+                    </div>  -->
                 </div>
             </div>
-        </div>
            
     <div class="sacola">
         <nav class="secao">Minha sacola</nav>
         <p></p>
    
-        <div class="livros">
             <div class="livro-info">
                 <p><strong>titulo</strong></p>
                 <p>Descrição</p>
@@ -93,18 +121,14 @@
                     <input type="number" id="qtd" name="qtd" min="1" required>
                     <a href="#" class="remover">Remover</a>
                 </div>
-            </div>
-           
-        </div>
+            </div>     
                         <div class="total">
                             <p><strong>Total R$</strong></p>
                         </div>  
                        
-                        <form class="pag-end" th:action="${c == null ? '/preencherForms'}" method="POST">
+<!--                        <form class="pag-end" th:action="${c == null ? '/preencherForms'}" method="POST">
        
                             <div class="secao-end">
-
-
                                 <h3><strong>Informações sobre o cliente</strong></h3>
                                 <label for="name">Nome:</label>
                                 <input type="text" name="nomecliente" required maxlength="100" th:value="${c?.getNomecliente()}">
@@ -112,10 +136,7 @@
                                 <input type="text" name="cpf" required maxlength="11" th:value="${c?.getCpf()}">
                                 <label for="text">E-mail:</label>
                                 <input type="text" name="email" required maxlength="100" th:value="${c?.getEmail()}">
-
-
                                 <p></p>
-
                                 <h3><strong>Endereço de entrega</strong></h3>
                                 <label for="name">Nome do destinatário:</label>
                                 <input type="text" name="nomedestinatario" required maxlength="100" th:value="${c?.getNomedestinatario()}">
@@ -129,27 +150,12 @@
                                 <input type="text" name="enderecocep" required maxlength="8" th:value="${c?.getEnderecocep()}">
                             </div>
                    
-                            <!-- <div class="secao-pag">
-                                <h3><strong>Dados de pagamento</strong></h3>
-                                <label for="card">Número do cartão:</label>
-                                <input type="text" id="card" name="card" required>
-                                <label for="expiry">Data de validade:</label>
-                                <input type="text" id="expiry" name="expiry" placeholder="MM/AA" required>
-                                <label for="cvv">CVV:</label>
-                                <input type="text" id="cvv" name="cvv" required>
-                            </div> -->
+                            
                         </form>
             <button class="checkout-button" type="submit" th:text="c == null ? 'preencherForms'}">Finalizar pedido</button>
-    </div>
-    <footer>
-        <br>
-        <p>Livraria Viva</p>
-        <p>Santa Cruz - RN</p>
-        <p>Todos os direitos reservados &copy;</p>
-        <br>
-    </footer>
-
+    </div>-->
     </body>
+    
 </html>
 
 
