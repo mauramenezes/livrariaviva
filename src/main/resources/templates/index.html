@@ -9,13 +9,62 @@
     </head>
     <body>
         <header>
-            <h1>LIVRARIA VIVA</h1>
+            <img class="logo" src="logolivrariaviva.png">
             <p>"Desvende mundos, uma página de cada vez!"</p>
         </header>
         <div class="container">
             <nav>Catálogo de livros</nav>
             <div class="row">
-                <div class="coluna">
+                    <div class="card">
+                        <img class="card-img-top" src="imgs/machado.png" alt="Imagem do Livro">
+                        <div class="card-body">
+                            <h5 class="card-title">50 contos</h5>
+                            <p class="card-text">Machado de Assis</p>
+                            <p class="card-text">Companhia das Letras</p>
+                            <span>R$60,00</span>
+                            <a href="#" class="btn btn-primary">Adicionar</a>
+                        </div>   
+                    </div>
+                    <div class="card">
+                        <img class="card-img-top" src="imgs/vidasSecas.png" alt="Imagem do Livro">
+                        <div class="card-body">
+                            <h5 class="card-title">Vidas Secas</h5>
+                            <p class="card-text">Graciliano Ramos</p>
+                            <p class="card-text">Companhia das Letras</p>
+                            <span>R$35,00</span>
+                            <a href="#" class="btn btn-primary">Adicionar</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img-top" src="imgs/AsMeninas.png" alt="Imagem do Livro">
+                        <div class="card-body">
+                            <h5 class="card-title">As Meninas</h5>
+                            <p class="card-text">Lygia F. Telles</p>
+                            <p class="card-text">Companhia das Letras</p>
+                            <span>R$50,00</span>
+                            <a href="#" class="btn btn-primary">Adicionar</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img-top" src="imgs/Abela&aFera.png" alt="Imagem do Livro">
+                        <div class="card-body">
+                            <h5 class="card-title">A bela e a fera</h5>
+                            <p class="card-text">Clarice Lispector</p>
+                            <p class="card-text">Editora Rocco</p>
+                            <span>R$35,00</span>
+                            <a href="#" class="btn btn-primary">Adicionar</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img-top" src="imgs/GrandeSertaoVeredas.png" alt="Imagem do Livro">
+                        <div class="card-body">
+                            <h5 class="card-title">Grande Sertão Veredas</h5>
+                            <p class="card-text">Guimarães Rosa</p>
+                            <p class="card-text">Cia das Letras</p>
+                            <span>R$30,00</span>
+                            <a href="#" class="btn btn-primary">Adicionar</a>
+                        </div>
+                    </div>
                     <div class="card" th:each="livro : ${livros}">
                         <img class="card-img-top" src="" alt="Imagem do Livro">
                         <div class="card-body">
@@ -25,7 +74,7 @@
                             <span th:text="${livro.getValor()}"></span>
                             <a href="#" class="btn btn-primary">Adicionar</a>
                         </div>
-                    </div>
+                    </div>  
                 </div>
             </div>
         </div>
@@ -42,50 +91,42 @@
                 <div class="form-section">
                     <label for="quantidade">qtd:</label>
                     <input type="number" id="qtd" name="qtd" min="1" required>
+                    <a href="#" class="remover">Remover</a>
                 </div>
             </div>
-            <div class="livro-info">
-                <p><strong>titulo</strong></p>
-                <p>Descrição</p>
-                <p>R$</p>
-                <div class="form-section">
-                    <label for="quantidade">qtd:</label>
-                    <input type="number" id="quantidade" name="quantidade" min="1" required>
-                </div>
-            </div>
+           
         </div>
                         <div class="total">
                             <p><strong>Total R$</strong></p>
                         </div>  
                        
-                        <form class="pag-end">
+                        <form class="pag-end" th:action="${c == null ? '/preencherForms'}" method="POST">
        
-                            <div class="secao-esnd">
+                            <div class="secao-end">
 
 
                                 <h3><strong>Informações sobre o cliente</strong></h3>
                                 <label for="name">Nome:</label>
-                                <input type="text" id="name" name="name" required>
+                                <input type="text" name="nomecliente" required maxlength="100" th:value="${c?.getNomecliente()}">
                                 <label for="text">CPF:</label>
-                                <input type="text" id="cpf" name="cpf" required>
+                                <input type="text" name="cpf" required maxlength="11" th:value="${c?.getCpf()}">
                                 <label for="text">E-mail:</label>
-                                <input type="text" id="email" name="email" required>
+                                <input type="text" name="email" required maxlength="100" th:value="${c?.getEmail()}">
 
 
                                 <p></p>
 
-
                                 <h3><strong>Endereço de entrega</strong></h3>
                                 <label for="name">Nome do destinatário:</label>
-                                <input type="text" id="name" name="name" required>
+                                <input type="text" name="nomedestinatario" required maxlength="100" th:value="${c?.getNomedestinatario()}">
                                 <label for="city">Rua:</label>
-                                <input type="text" id="city" name="city" required>
+                                <input type="text" name="enderecorua" required maxlength="100" th:value="${c?.getEnderecorua()}">
                                 <label for="address">Número:</label>
-                                <input type="text" id="address" name="address" required>
+                                <input type="text" name="endereconumero" required maxlength="3" th:value="${c?.getEndereconumero()}">
                                 <label for="city">Bairro:</label>
-                                <input type="text" id="city" name="city" required>
+                                <input type="text" name="enderecobairro" required maxlength="100" th:value="${c?.getEnderecobairro()}">
                                 <label for="cep">CEP:</label>
-                                <input type="text" id="cep" name="cep" required>
+                                <input type="text" name="enderecocep" required maxlength="8" th:value="${c?.getEnderecocep()}">
                             </div>
                    
                             <!-- <div class="secao-pag">
@@ -98,9 +139,15 @@
                                 <input type="text" id="cvv" name="cvv" required>
                             </div> -->
                         </form>
-            <button class="checkout-button" type="submit">Finalizar pedido</button>
+            <button class="checkout-button" type="submit" th:text="c == null ? 'preencherForms'}">Finalizar pedido</button>
     </div>
-
+    <footer>
+        <br>
+        <p>Livraria Viva</p>
+        <p>Santa Cruz - RN</p>
+        <p>Todos os direitos reservados &copy;</p>
+        <br>
+    </footer>
 
     </body>
 </html>
@@ -114,8 +161,15 @@
         height: 100vh;
         font-family: "Lexend", "Arial";
         gap: 16px;
-        background-color: rgb(255, 254, 192);
+        background-color: #ffec6d;
     }
+
+    footer{
+    margin-top: 30px;
+    text-align: center;
+    background-color: #f8ffde;
+    opacity: 70%;
+} 
    
    
     h1{
@@ -128,6 +182,8 @@
     .card{
         margin-top: 15px;
         margin-bottom: 20px;
+        margin-left: 6px;
+        margin-right: 6px;
         padding: 10px;
         background-color: rgb(255, 255, 255);
         width: 200px;
@@ -152,23 +208,17 @@
 
     nav{
         color: rgb(255, 255, 255);
-        margin-left: 0;
-        margin-right: 0;
         text-align: center;
         padding: 5px;
         border-style: none;
-        background-color: rgb(255, 229, 85);
+        background-color: rgb(85, 147, 255);
         width: auto;
-    }
-
-
-    .coluna{
-        margin: auto;
     }
 
 
     .row{
         margin: 20px;
+        display: flexbox;
     }
 
 
@@ -187,7 +237,7 @@
 .sacola {
     max-width: 600px;
     margin: 20px auto;
-    background-color: hwb(44 47% 0%);
+    background-color: hwb(41 28% 0%);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -247,7 +297,7 @@ h3 {
     font-size: large;
     color: #ffffff;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 
@@ -262,6 +312,7 @@ h3 {
     border-radius: 4px;
     cursor: pointer;
     text-decoration: none;
+    margin-top: 5px;
 }
 
 
@@ -286,9 +337,10 @@ input{
         text-align: center;
         margin: auto;
         padding: auto;
-        background-color: rgb(255, 188, 79);
+        background-color: rgb(99, 75, 255);
         width: 150px;
         border-radius: 20px;
+        
 }
 
 .pag-end h2, .pag-end h3 {
@@ -300,7 +352,10 @@ input{
     display: grid;
     grid-gap: 20px;
     font-family: 'Arial', sans-serif;
-    margin: 50px auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 12px;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -322,6 +377,30 @@ input{
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+.remover{
+        color: rgb(255, 255, 255);
+        text-align: center;
+        margin: auto;
+        padding: 7px;
+        background-color: rgb(255, 138, 79);
+        width: 150px;
+        border-radius: 5px;
+}
+
+.logo{
+    margin-top: 10px;
+    text-align: center;
+    width: 200px;
+    height: 200px;
+
+}
+
+header p{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #2020ff;
+    font-weight: 600;
+    font-size: large;
 }
 
 </style>

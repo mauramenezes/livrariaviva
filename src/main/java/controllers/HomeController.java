@@ -5,6 +5,7 @@
 package controllers;
 
 import java.util.List;
+import livrariaviva.models.Cliente;
 import livrariaviva.models.Livro;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -25,24 +26,18 @@ public class HomeController {
         List<Livro> livros = Livro.exibir(jdbc);
         model.addAttribute("livros", livros);
         System.out.println(livros.isEmpty());
-        return "home";
+        return "index";
     }
 
     @Autowired
     JdbcTemplate jdbc;
 
-    //    @GetMapping("/adicionar")
-//    public String excluir(int id) {
-//        Livro.adicionar(id, jdbc);
-//        return "redirect:/";
-//    }
-//    @PostMapping("/adicionar")
-//    public String adicionar(String nome,
-//            int qtd, float preco) {
-//        Produto p = new Produto(nome, 
-//                qtd, preco);
-//        p.salvar(jdbc);
-//        return "redirect:/";
-//    }
-//    
+   @PostMapping("/preencherForms")
+    public String preencherForms (String nomecliente, String nomedestinatario, String email, String telefone, String cpf, 
+            String enderecorua, String endereconumero, String enderecobairro, String enderecocep) {
+        Cliente c = new Cliente (nomecliente, nomedestinatario, email, telefone, cpf, 
+                enderecorua, endereconumero, enderecobairro, enderecocep);
+        c.cadastrar(jdbc);
+        return "redirect:/";
+    }
 }

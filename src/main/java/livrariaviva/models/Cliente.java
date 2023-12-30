@@ -5,6 +5,7 @@
 package livrariaviva.models;
 
 import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
  *
@@ -13,14 +14,15 @@ import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
 public class Cliente {
     
     private int idcliente;
-    private String nome, email, telefone, cpf, enderecorua, endereconumero, enderecobairro, enderecocep;
+    private String nomecliente, nomedestinatario, email, telefone, cpf, enderecorua, endereconumero, enderecobairro, enderecocep;
 
     public Cliente() {
     }
     
 
-    public Cliente(String nome, String email, String telefone, String cpf, String enderecorua, String endereconumero, String enderecobairro, String enderecocep) {
-        this.nome = nome;
+    public Cliente(String nomecliente, String nomedestinatario, String email, String telefone, String cpf, String enderecorua, String endereconumero, String enderecobairro, String enderecocep) {
+        this.nomecliente = nomecliente;
+        this.nomedestinatario = nomedestinatario;
         this.email = email;
         this.telefone = telefone;
         this.cpf = cpf;
@@ -30,13 +32,22 @@ public class Cliente {
         this.enderecocep = enderecocep;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomecliente() {
+        return nomecliente;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomecliente(String nomecliente) {
+        this.nomecliente = nomecliente;
     }
+
+    public String getNomedestinatario() {
+        return nomedestinatario;
+    }
+
+    public void setNomedestinatario(String nomedestinatario) {
+        this.nomedestinatario = nomedestinatario;
+    }
+
 
     public String getEmail() {
         return email;
@@ -94,7 +105,26 @@ public class Cliente {
         this.enderecocep = enderecocep;
     }
     
-    
-    
-    
+     
+    public void cadastrar(JdbcTemplate jdbc) {
+        jdbc.update(
+            "INSERT INTO clientes (nomecliente, email, nomedestinario, enderecorua, endereconumero, enderecobairro, enderecocep, telefone, cpf) " +
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);", (ps) -> {
+                ps.setString(1, nomecliente);
+                ps.setString(2, email);
+                ps.setString(3, nomedestinatario);
+                ps.setString(4, enderecorua);
+                ps.setString(5,  endereconumero);
+                ps.setString(6, enderecobairro);
+                ps.setString(7,  enderecocep);
+                ps.setString(8, telefone);
+                ps.setString(9, cpf);
+                       
+            });
+    }
 }
+    
+    
+    
+    
+
